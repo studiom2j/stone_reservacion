@@ -13,7 +13,9 @@ use yii\filters\VerbFilter;
  * UsuarioController implements the CRUD actions for Usuario model.
  */
 class UsuarioController extends Controller
-{
+{   
+   public $layout;
+
     public function behaviors()
     {
         return [
@@ -30,15 +32,30 @@ class UsuarioController extends Controller
      * Lists all Usuario models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionAdmin()
     {
+        $this->assignLayout();
         $searchModel = new UsuarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+     /**
+     * Verify roles user.
+     * @return mixed
+     */
+    public function actionIndex()
+    {   
+        $this->assignLayout();
+        if(Yii::$app->user->identity->id_tipo_usuario == 1){
+             return $this->render('admin_index');
+        }
+        else if(Yii::$app->user->identity->id_tipo_usuario == 2){
+            return $this->render('user_index');
+        }
     }
 
     /**
@@ -48,6 +65,7 @@ class UsuarioController extends Controller
      */
     public function actionView($id)
     {
+        $this->assignLayout();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -60,6 +78,7 @@ class UsuarioController extends Controller
      */
     public function actionCreate()
     {
+        $this->assignLayout();
         $model = new Usuario();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -79,6 +98,7 @@ class UsuarioController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->assignLayout();
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -116,6 +136,15 @@ class UsuarioController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    private function assignLayout(){
+        if(Yii::$app->user->identity->id_tipo_usuario == 1){
+            $this->layout = 'main_admin';
+        }
+        else if(Yii::$app->user->identity->id_tipo_usuario == 2){
+            $this->layout = 'main_user';
         }
     }
 }

@@ -36,22 +36,10 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     ['label' => 'Inicio', 'url' => ['/site/index']],
-                    [
-                        'label' => 'La Empresa',
-                        'items' => [
-                            ['label' => 'Quienes Somos', 'url' => ['quienesomos']],
-                        ],
-                    ],
-                    ['label' => 'Servicios', 'url' => ['/site/contact']],
-                    [
-                        'label' => 'Afiliaciones',
-                        'items' => [
-                            ['label' => 'Suscripción', 'url' => ['quienesomos']],
-                            ['label' => 'Tarifas', 'url' => ['quienesomos2']],
-                            ['label' => 'Promociones', 'url' => ['quienesomos3']],
-                        ],
-                    ],
-                    ['label' => 'Contacto', 'url' => ['/site/contact']],
+                    ['label' => 'Usuarios', 'url' => ['/site/about']],
+                    ['label' => 'Afliaciones', 'url' => ['/site/contact']],
+                    ['label' => 'Reservaciones', 'url' => ['/site/contact']],
+                    ['label' => 'Espacios', 'url' => ['/site/contact']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         ['label' => 'Logout (' . Yii::$app->user->identity->nombre_usuario . ')',

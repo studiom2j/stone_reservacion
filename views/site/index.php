@@ -1,17 +1,40 @@
 <?php
 /* @var $this yii\web\View */
+
+use yii\bootstrap\Carousel;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+   <!-- <div class="jumbotron">
+            <h1>Congratulations!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+            <p class="lead">You have successfully created your Yii-powered application.</p>
 
-        <p><a class="btn btn-lg btn-primary" href="http://www.yiiframework.com">Entra en la documentacion de yii <span class="badge">30</span> </a></p>
+            <p><a class="btn btn-lg btn-primary" href="http://www.yiiframework.com">Entra en la documentacion de yii <span class="badge">30</span> </a></p>
+        </div> 
+    -->
+
+  <!--  <div class="row">
+        <?php
+            echo Carousel::widget([
+                'items' => [
+                    // the item contains only the image
+                    '<img src="http://lorempixel.com/1200/315/"/>',
+                    // equivalent to the above
+                    ['content' => '<img src="http://lorempixel.com/1200/315/"/>'],
+                    // the item contains both the image and the caption
+                    [
+                        'content' => '<img src="http://lorempixel.com/1200/315/"/>',
+                        //'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
+                        'options' => [''],
+                    ],
+                 ]
+            ]);
+        ?>
     </div>
-
+    -->
     <div class="body-content">
 
         <div class="row">
